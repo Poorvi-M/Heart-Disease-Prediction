@@ -120,7 +120,7 @@ GridSearchCV uses cross validation **internally** as its evaluation mechanism �
 
 ---
 
-## 🧪 Test Set Evaluation
+## Test Set Evaluation
 
 The best estimator (full pipeline — preprocessor + Random Forest) was evaluated on the held-out test set:
 
