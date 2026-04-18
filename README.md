@@ -1,16 +1,16 @@
-# 🫀 Heart Disease Prediction
+# Heart Disease Prediction
 
 A machine learning project that predicts the presence of heart disease in patients and assigns a clinical risk severity grade to positive cases.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Heart disease is one of the leading causes of mortality worldwide. Early and accurate detection is critical — a missed diagnosis (false negative) can be life-threatening. This project builds a robust binary classification pipeline to predict heart disease presence, optimised for **recall** to minimise false negatives, and extends predictions with a **heuristic severity grading system** for patients diagnosed positive.
 
 ---
 
-## 📂 Dataset
+## Dataset
 
 - **Source:** [Heart Disease Dataset – Kaggle](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset)
 - **Size:** 1,025 rows × 14 columns
@@ -37,7 +37,7 @@ Heart disease is one of the leading causes of mortality worldwide. Early and acc
 
 ---
 
-## 🔍 Data Exploration & Cleaning
+## Data Exploration & Cleaning
 
 - Confirmed **no missing values** across all 14 columns
 - Verified **no biologically impossible values** (e.g. zero cholesterol — minimum was 126 mg/dl)
@@ -47,7 +47,7 @@ Heart disease is one of the leading causes of mortality worldwide. Early and acc
 
 ---
 
-## ⚙️ Preprocessing Pipeline
+## Preprocessing Pipeline
 
 A `sklearn` **Pipeline** with a **ColumnTransformer** was used to apply different transformations to different column types.
 
@@ -77,7 +77,7 @@ Using a Pipeline **prevents data leakage**. The scaler is fit only on training d
 
 ---
 
-## 🏆 Model Selection
+## Model Selection
 
 ### Step 1 — Cross Validation Screening
 
@@ -124,17 +124,6 @@ GridSearchCV uses cross validation **internally** as its evaluation mechanism �
 
 The best estimator (full pipeline — preprocessor + Random Forest) was evaluated on the held-out test set:
 
-```
-              precision    recall  f1-score   support
-
-           0       0.97      1.00      0.99       102
-           1       1.00      0.97      0.99       103
-
-    accuracy                           0.99       205
-   macro avg       0.99      0.99      0.99       205
-weighted avg       0.99      0.99      0.99       205
-```
-
 | Metric | Value |
 |---|---|
 | Accuracy | 99% |
@@ -144,7 +133,7 @@ weighted avg       0.99      0.99      0.99       205
 
 ---
 
-## 🔴 Severity Grading System
+## Severity Grading System
 
 For patients predicted to have heart disease, a **heuristic risk score** is computed using four clinically relevant features:
 
@@ -159,9 +148,9 @@ For patients predicted to have heart disease, a **heuristic risk score** is comp
 
 | Score Range | Severity |
 |---|---|
-| 0–15 | 🟢 Mild |
-| 16–31 | 🟡 Moderate |
-| 32–47 | 🔴 Severe |
+| 0–15 | Mild |
+| 16–31 | Moderate |
+| 32–47 | High |
 
 *Note: Bin boundaries are derived from the actual score distribution in the test set (max observed score: 47). Scores are proportional and continuous — higher always means higher risk.*
 
@@ -173,11 +162,11 @@ For patients predicted to have heart disease, a **heuristic risk score** is comp
 | Moderate | 24.55 |
 | Severe | 39.92 |
 
-> ⚠️ **Disclaimer:** This severity score is a heuristic indicator based on clinically relevant features. It is **not a medical diagnosis** and would require cardiologist validation before use in any real clinical setting. In production medical ML, domain experts define severity criteria — data scientists implement them.
+> **Disclaimer:** This severity score is a heuristic indicator based on clinically relevant features. It is **not a medical diagnosis** and would require cardiologist validation before use in any real clinical setting. In production medical ML, domain experts define severity criteria — data scientists implement them.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Heart-Disease-Prediction/
@@ -188,7 +177,7 @@ Heart-Disease-Prediction/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Python 3.12**
 - **pandas** — data manipulation
@@ -202,7 +191,7 @@ Heart-Disease-Prediction/
 ---
 
 
-## 🔮 Future Work
+## Future Work
 
 - Validate on an independent hospital dataset to test real-world generalisation
 - Collaborate with a cardiologist to define medically validated severity criteria
